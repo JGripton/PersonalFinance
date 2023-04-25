@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4CAF50;
+    padding: 1rem;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.nav-brand:hover {
+    color: #F1F1F1;
+}
+
+.nav-menu {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu > li > a {
+    display: block;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.nav-menu > li > a:hover {
+    background-color: #3E8E41;
+}
+
+.nav-account {
+    position: relative;
+}
+
+.nav-account-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #4CAF50;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.nav-account-dropdown > li > a {
+    display: block;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.nav-account-dropdown > li > a:hover {
+    background-color: #3E8E41;
+}
+
+.nav-account:hover .nav-account-dropdown {
+    display: block;
+}

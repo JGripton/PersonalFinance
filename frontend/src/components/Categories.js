@@ -14,8 +14,6 @@ const Categories = () => {
   const [newCategory, setNewCategory] = useState({ name: '', description: '' });
   const [editing, setEditing] = useState(false);
   const [checkedStatus, setCheckedStatus] = useState({});
-
-
   const { refreshToken } = useAuth();
 
   useEffect(() => {
@@ -35,8 +33,6 @@ const Categories = () => {
         },
       });
       setCategories(response.data);
-      //Init checkbox states
-      const newCheckboxes = {};
       console.log('Categories response data:', response.data);
     } catch (error) {
       console.error('Error fetching categories:', error);
@@ -62,7 +58,6 @@ const Categories = () => {
       );
       setCategories([...categories, response.data]);
       setNewCategory({id: '', name: '', description: '' });
-      //
     } catch (error) {
       console.error('Error adding category:', error);
       if (error.response) {

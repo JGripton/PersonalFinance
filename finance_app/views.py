@@ -305,7 +305,15 @@ class BudgetDetailView(APIView):
     def get(self, request, pk, format=None):
         budget = self.get_object(pk)
         serializer = BudgetSerializer(budget)
-        return Response(serializer.data)         
+        return Response(serializer.data)
+
+class BudgetDeleteView(generics.DestroyAPIView):
+    serializer_class = BudgetSerializer
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Budget.objects.filter(user=self.request.user)             
 
  # Savings Goal
 class SavingsGoalListCreateAPIView(generics.ListCreateAPIView):

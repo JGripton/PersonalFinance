@@ -18,7 +18,8 @@ class CategorySerializer(serializers.ModelSerializer):
 class BudgetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Budget
-        fields = '__all__'
+        fields = ['id', 'category', 'amount', 'current_amount', 'start_date', 'end_date']
+        read_only_fields = ['id']
 
 class SavingsGoalSerializer(serializers.ModelSerializer):
     class Meta:

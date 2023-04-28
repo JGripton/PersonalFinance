@@ -21,7 +21,7 @@ function NavBar() {
           <Nav.Link href="/">Dashboard</Nav.Link>
         </Nav>
         <Nav>
-          <NavDropdown title="Account" id="collasible-nav-dropdown" alignRight>
+          <NavDropdown title="Account" id="collasible-nav-dropdown">
             <NavDropdown.Item href="#profile">Profile</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item onClick={() => logout()}>Logout</NavDropdown.Item>

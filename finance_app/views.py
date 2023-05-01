@@ -339,7 +339,15 @@ class SavingsGoalDetailView(APIView):
     def get(self, request, pk, format=None):
         savingsGoal = self.get_object(pk)
         serializer = SavingsGoalSerializer(savingsGoal)
-        return Response(serializer.data)              
+        return Response(serializer.data) 
+
+    class SavingsGoalDeleteView(generics.DestroyAPIView):
+        serializer_class = SavingsGoalSerializer
+        authentication_classes = [JWTAuthentication]
+        permission_classes = [IsAuthenticated]
+
+        def get_queryset(self):
+            return SavingsGoal.objects.filter(user=self.request.user)                   
 
  # Bill
 class BillListCreateAPIView(generics.ListCreateAPIView):
@@ -364,7 +372,15 @@ class BillDetailView(APIView):
     def get(self, request, pk, format=None):
         bill = self.get_object(pk)
         serializer = BillSerializer(bill)
-        return Response(serializer.data)             
+        return Response(serializer.data)   
+
+    class BillDeleteView(generics.DestroyAPIView):
+        serializer_class = BillSerializer
+        authentication_classes = [JWTAuthentication]
+        permission_classes = [IsAuthenticated]
+
+         def get_queryset(self):
+            return Bill.objects.filter(user=self.request.user)                        
 
 # Register User API
 class RegisterUser(APIView):

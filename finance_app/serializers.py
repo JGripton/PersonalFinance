@@ -6,7 +6,8 @@ from .models import Expense, Category, Budget, SavingsGoal, Bill
 class ExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Expense
-        fields = '__all__'
+        ['id', 'category','date', 'amount', 'description']
+        read_only_fields = ['id']
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,12 +25,14 @@ class BudgetSerializer(serializers.ModelSerializer):
 class SavingsGoalSerializer(serializers.ModelSerializer):
     class Meta:
         model = SavingsGoal
-        fields = '__all__'
+        fields = ['id', 'name', 'target_amount', 'current_amount', 'deadline']
+        read_only_fields = ['id']
 
 class BillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bill
-        fields = '__all__'
+        fields = ['id', 'name', 'amount', 'due_date', 'frequency']
+        read_only_fields = ['id']
 
 class RegisterUserSerializer(serializers.ModelSerializer):
     class Meta:

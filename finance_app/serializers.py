@@ -6,7 +6,7 @@ from .models import Expense, Category, Budget, SavingsGoal, Bill
 class ExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Expense
-        ['id', 'category','date', 'amount', 'description']
+        fields = ['id', 'category','date', 'amount', 'description']
         read_only_fields = ['id']
 
 class CategorySerializer(serializers.ModelSerializer):

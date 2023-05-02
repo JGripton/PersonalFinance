@@ -247,7 +247,15 @@ class ExpenseDetailView(APIView):
     def get(self, request, pk, format=None):
         expense = self.get_object(pk)
         serializer = ExpenseSerializer(expense)
-        return Response(serializer.data)        
+        return Response(serializer.data)     
+        
+class ExpenseDeleteView(generics.DestroyAPIView):
+    serializer_class = ExpenseSerializer
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Expense.objects.filter(user=self.request.user)           
 
  # Category
 class CategoryListCreateAPIView(generics.ListCreateAPIView):

@@ -379,7 +379,7 @@ class BillDetailView(APIView):
         authentication_classes = [JWTAuthentication]
         permission_classes = [IsAuthenticated]
 
-         def get_queryset(self):
+        def get_queryset(self):
             return Bill.objects.filter(user=self.request.user)                        
 
 # Register User API
